@@ -7,8 +7,8 @@ class ListTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 35, 0, 0),
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 25),
+      margin: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
       height: 80,
       // color: Colors.orange,
       child: Row(
@@ -17,7 +17,7 @@ class ListTitle extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w700,
               // backgroundColor: Color.fromARGB(90, 247, 171, 84),
@@ -27,7 +27,7 @@ class ListTitle extends StatelessWidget {
             onPressed: () {},
             style: ButtonStyle(
               backgroundColor:
-                  MaterialStateProperty.all(Color.fromARGB(255, 240, 128, 0)),
+                  MaterialStateProperty.all(const Color.fromARGB(255, 240, 128, 0)),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -35,10 +35,10 @@ class ListTitle extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 13, horizontal: 5),
+              padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 5),
               child: Text(
                 "Déconnecter".toLowerCase(),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 13,
                 ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "767359008110",
+    "project_id": "sonatrach-b8e65",
+    "storage_bucket": "sonatrach-b8e65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767359008110:android:3e2b3397cc19414097957f",
+        "android_client_info": {
+          "package_name": "com.example.app_sonatrach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767359008110-ejf5iucp3nt22l00517it978k4g6r6od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaGgHAHRva7AlekGWe67a5tXbat5I345Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767359008110-ejf5iucp3nt22l00517it978k4g6r6od.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,12 +1,18 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:app_sonatrach/pages/Home.dart';
-import 'package:app_sonatrach/pages/list_page.dart';
-import 'package:app_sonatrach/pages/login_page.dart';
+import 'package:app_sonatrach/screens/home_screen.dart';
+import 'package:app_sonatrach/screens/list_screen.dart';
+import 'package:app_sonatrach/screens/login_screen.dart';
+import 'package:app_sonatrach/screens/personnel_home_screen.dart';
+import 'package:app_sonatrach/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(SonatrachApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(const SonatrachApp());
 }
 
 class SonatrachApp extends StatelessWidget {
@@ -17,12 +23,13 @@ class SonatrachApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "sonatrach dz",
-      initialRoute: "/login",
+      initialRoute: "/",
       routes: {
-        '/': (context) => Home(),
-        '/login': (context) => LoginPage(),
-        '/list': (context) => ListPage(),
-        '/demande': (context) => ListPage(),
+        '/': (context) => HomeScreen(),
+        LoginScreen.routeName: (context) => LoginScreen(),
+        SignupScreen.routeName: (context) => SignupScreen(),
+        ListScreen.routeName: (context) => ListScreen(),
+        PersonnelHomeScreen.routeName: (ctx) => PersonnelHomeScreen(),
       },
     );
   }

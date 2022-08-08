@@ -6,14 +6,16 @@ import 'package:app_sonatrach/widgets/liste_demandes.dart';
 import 'package:app_sonatrach/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
-class ListPage extends StatefulWidget {
-  const ListPage({Key? key}) : super(key: key);
+class ListScreen extends StatefulWidget {
+    static const routeName = '/list';
+
+  const ListScreen({Key? key}) : super(key: key);
 
   @override
-  State<ListPage> createState() => _ListPageState();
+  State<ListScreen> createState() => _ListScreenState();
 }
 
-class _ListPageState extends State<ListPage> {
+class _ListScreenState extends State<ListScreen> {
   final List<DemandeSortie> _listeDemSortie = [
     DemandeSortie(
         0,
