@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 enum Role { personnelSimple, responsableNiv1, responsableNiv2 }
 
 class Utilisateur {
@@ -27,22 +29,44 @@ class Utilisateur {
     this.role = Role.personnelSimple,
   });
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'nom': nom,
-        'prenom': prenom,
-        'email': email,
-        'password': password,
-        'role': "personnelSimple",
-      };
+  factory Utilisateur.fromJson(
+      DocumentSnapshot<Map<String, dynamic>> snapshot) {
+    final data = snapshot.data();
+    return Utilisateur(
+      id: data?['id'],
+      nom: data?['nom'],
+      prenom: data?['prenom'],
+      email: data?['email'],
+      password: data?['password'],
+      role: data?['role'],
+    );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'nom': nom,
+      'prenom': prenom,
+      'email': email,
+      'password': password,
+      'role': "personnelSimple",
+    };
+  }
+  // Map<String, dynamic> toJson() => {
+  //       'id': id,
+  //       'nom': nom,
+  //       'prenom': prenom,
+  //       'email': email,
+  //       'password': password,
+  //       'role': "personnelSimple",
+  //     };
 
-  static Utilisateur fromJson(Map<String, dynamic> json) => Utilisateur(
-        id: json['id'],
-        nom: json['nom'],
-        prenom: json['prenom'],
-        email: json['email'],
-        password: json['password'],
-        role: json['role'],
-        // birthday: (json['birthday'] as Timestamp).toDate(),
-      );
+  // static Utilisateur fromJson(Map<String, dynamic> json) => Utilisateur(
+  //       id: json['id'],
+  //       nom: json['nom'],
+  //       prenom: json['prenom'],
+  //       email: json['email'],
+  //       password: json['password'],
+  //       role: json['role'],
+  //       // birthday: (json['birthday'] as Timestamp).toDate(),
+  //     );
 }

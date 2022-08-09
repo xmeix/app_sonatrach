@@ -1,12 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, depend_on_referenced_packages
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
 import 'package:app_sonatrach/screens/home_screen.dart';
 import 'package:app_sonatrach/screens/list_screen.dart';
 import 'package:app_sonatrach/screens/login_screen.dart';
 import 'package:app_sonatrach/screens/personnel_home_screen.dart';
 import 'package:app_sonatrach/screens/signup_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

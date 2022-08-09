@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:app_sonatrach/addons/authentication.dart';
-import 'package:app_sonatrach/screens/personnel_home_screen.dart';
 import 'package:app_sonatrach/widgets/background_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
+        print(e.message);
         errorMessage = e.message;
       });
     }

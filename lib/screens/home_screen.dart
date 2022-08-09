@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:app_sonatrach/addons/authentication.dart';
 import 'package:app_sonatrach/screens/login_screen.dart';
 import 'package:app_sonatrach/screens/personnel_home_screen.dart';
