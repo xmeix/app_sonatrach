@@ -41,15 +41,16 @@ class Auth {
   }
 
   Future<void> createUser({
+    required String id,
     required String nom,
     required String prenom,
     required String email,
     required String password,
   }) async {
-    final docUser = FirebaseFirestore.instance.collection("users").doc();
+    final docUser = FirebaseFirestore.instance.collection("users").doc(id);
 
     final user = Utilisateur(
-      id: docUser.id,
+      id: id,
       nom: nom,
       prenom: prenom,
       email: email,
@@ -73,7 +74,12 @@ class Auth {
 
     if (userCredential.user != null) {
       //store in firestore
-      createUser(nom: nom, prenom: prenom, email: email, password: password);
+      createUser(
+          id: userCredential.user!.uid,
+          nom: nom,
+          prenom: prenom,
+          email: email,
+          password: password);
     }
   }
 

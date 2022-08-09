@@ -17,9 +17,8 @@ class PersonnelHomeScreen extends StatefulWidget {
 
 class _PersonnelHomeScreenState extends State<PersonnelHomeScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  User? user;
+  final String uid = FirebaseAuth.instance.currentUser!.uid;
 
-  String? uid;
   //Doc ids
   List<String> docIDs = [];
 
@@ -27,26 +26,45 @@ class _PersonnelHomeScreenState extends State<PersonnelHomeScreen> {
   void initState() {
     //getDocId();
     super.initState();
-    user = FirebaseAuth.instance.currentUser!;
-    uid = user!.uid;
+  }
+
+  Future<void> signOut() async {
+    await Auth().signOut().then((value) {
+      //go to login screen
+    });
+  }
+
+  Widget _signOutButton() {
+    return ElevatedButton(onPressed: signOut, child: const Text('Sign Out'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: Column(
+      appBar: AppBar(
+        title: Text(uid),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            Text(user!.email.toString()),
-            Text(uid.toString()),
             FutureBuilder(
               future:
                   FirebaseFirestore.instance.collection('users').doc(uid).get(),
               builder: ((context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text("Something went wrong");
+                }
+
+                if (snapshot.hasData && !snapshot.data!.exists) {
+                  return Text("Document does not exist");
+                }
                 return Text(snapshot.data!['nom'].toString());
               }),
-            )
+            ),
+            _signOutButton(),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
