@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new
 
 import 'package:app_sonatrach/addons/authentication.dart';
+import 'package:app_sonatrach/models/utilisateur.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,9 @@ class PersonnelHomeScreen extends StatefulWidget {
 
 class _PersonnelHomeScreenState extends State<PersonnelHomeScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final user = FirebaseAuth.instance.currentUser!;
+  User? user;
 
-  final uid = FirebaseAuth.instance.currentUser!.uid;
+  String? uid;
   //Doc ids
   List<String> docIDs = [];
 
@@ -26,32 +27,24 @@ class _PersonnelHomeScreenState extends State<PersonnelHomeScreen> {
   void initState() {
     //getDocId();
     super.initState();
+    user = FirebaseAuth.instance.currentUser!;
+    uid = user!.uid;
   }
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-
     return Scaffold(
         appBar: AppBar(),
         body: Column(
           children: [
-            
-            FutureBuilder<DocumentSnapshot>(
-              future: users.doc(FirebaseAuth.instance.currentUser!.uid).get(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<DocumentSnapshot> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    Map<String, dynamic> data =
-                        snapshot.data!.data() as Map<String, dynamic>;
-                    return Text(data['nom']);
-                  } else if (snapshot.hasError) {
-                    return Text('2');
-                  }
-                }
-                return Center(child: CircularProgressIndicator());
-              },
+            Text(user!.email.toString()),
+            Text(uid.toString()),
+            FutureBuilder(
+              future:
+                  FirebaseFirestore.instance.collection('users').doc(uid).get(),
+              builder: ((context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                return Text(snapshot.data!['nom'].toString());
+              }),
             )
           ],
         ));

@@ -11,8 +11,7 @@ import 'package:app_sonatrach/screens/signup_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  runApp(const SonatrachApp());
+  runApp(SonatrachApp());
 }
 
 class SonatrachApp extends StatelessWidget {
