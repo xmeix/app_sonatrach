@@ -44,22 +44,18 @@ class _TestScreenState extends State<TestScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (userTest != null) {
-      return const PersonnelAcceuilScreen();
-    } else
-      return LoginScreen();
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text(loggedIn.toString()),
-    //   ),
-    //   body: user != null
-    //       ? Column(
-    //           children: [
-    //             Text(userTest?.email ?? ""),
-    //             _signOutButton(),
-    //           ],
-    //         )
-    //       : Center(child: CircularProgressIndicator()),
-    // );
+    return StreamBuilder(
+      stream: Auth().authStateChanges,
+      builder: ((context, snapshot) {
+        if (snapshot.hasData) {
+          if (userTest != null) {
+            return const PersonnelAcceuilScreen();
+          } else
+            return LoginScreen();
+        } else {
+          return const LoginScreen();
+        }
+      }),
+    );
   }
 }
