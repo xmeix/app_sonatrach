@@ -3,8 +3,6 @@ import 'package:app_sonatrach/models/utilisateur.dart';
 import 'package:app_sonatrach/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class PersonnelAcceuilScreen extends StatefulWidget {
   const PersonnelAcceuilScreen({Key? key}) : super(key: key);
@@ -16,13 +14,13 @@ class PersonnelAcceuilScreen extends StatefulWidget {
 
 class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
   bool loggedIn = false;
-  User? user = Auth().currentUser as User?;
+  User? user = Auth().currentUser!;
   Utilisateur? userTest;
 
   @override
   void initState() {
     super.initState();
-    user = Auth().currentUser as User?;
+    user = Auth().currentUser;
     loggedIn = Auth().isUserLoggedIn();
     getUser();
   }

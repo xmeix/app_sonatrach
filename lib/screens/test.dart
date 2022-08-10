@@ -14,12 +14,12 @@ class TestScreen extends StatefulWidget {
 class _TestScreenState extends State<TestScreen> {
   //is the user loged in
   bool loggedIn = Auth().isUserLoggedIn();
-  late final User user;
+  late User user;
   Utilisateur? userTest;
   @override
   void initState() {
     super.initState();
-    user = Auth().currentUser as User;
+    user = Auth().currentUser!;
     getUser();
   }
 

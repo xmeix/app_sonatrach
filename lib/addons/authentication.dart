@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  User? Function() get currentUser => _firebaseAuth.currentUser;
+  User? get currentUser => FirebaseAuth.instance.currentUser();
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
