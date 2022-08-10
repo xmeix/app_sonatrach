@@ -1,5 +1,6 @@
 import 'package:app_sonatrach/addons/authentication.dart';
 import 'package:app_sonatrach/models/utilisateur.dart';
+import 'package:app_sonatrach/screens/login_screen.dart';
 import 'package:app_sonatrach/screens/personnel_acceuil_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,17 +15,17 @@ class TestScreen extends StatefulWidget {
 class _TestScreenState extends State<TestScreen> {
   //is the user loged in
   bool loggedIn = Auth().isUserLoggedIn();
-  late User user;
+  User? user = Auth().currentUser;
   Utilisateur? userTest;
   @override
   void initState() {
     super.initState();
-    user = Auth().currentUser!;
+
     getUser();
   }
 
   Future getUser() async {
-    await Auth().getUser(user.uid).then((snap) => setState(() {
+    await Auth().getUser(user!.uid).then((snap) => setState(() {
           userTest = snap;
         }));
   }
@@ -46,7 +47,7 @@ class _TestScreenState extends State<TestScreen> {
     if (userTest != null) {
       return const PersonnelAcceuilScreen();
     } else
-      return Scaffold(body: Center(child: CircularProgressIndicator()));
+      return LoginScreen();
     // return Scaffold(
     //   appBar: AppBar(
     //     title: Text(loggedIn.toString()),
