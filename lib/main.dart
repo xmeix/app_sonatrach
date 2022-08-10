@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_constructors, depend_on_referenced_packages
+import 'package:app_sonatrach/screens/personnel_acceuil_screen.dart';
+import 'package:app_sonatrach/screens/responsable_acceuil_screen.dart';
+import 'package:app_sonatrach/screens/responsable_niv2_screen.dart';
+import 'package:app_sonatrach/screens/test.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-
-import 'package:app_sonatrach/screens/home_screen.dart';
+import 'package:flutter/material.dart'; 
 import 'package:app_sonatrach/screens/list_screen.dart';
 import 'package:app_sonatrach/screens/login_screen.dart';
-import 'package:app_sonatrach/screens/personnel_home_screen.dart';
 import 'package:app_sonatrach/screens/signup_screen.dart';
 
 Future<void> main() async {
@@ -24,11 +25,15 @@ class SonatrachApp extends StatelessWidget {
       title: "sonatrach dz",
       initialRoute: "/",
       routes: {
-        '/': (context) => HomeScreen(),
+        '/': (context) => TestScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         SignupScreen.routeName: (context) => SignupScreen(),
         ListScreen.routeName: (context) => ListScreen(),
-        PersonnelHomeScreen.routeName: (ctx) => PersonnelHomeScreen(),
+         PersonnelAcceuilScreen.routeName: (context) => PersonnelAcceuilScreen(),
+        ResponsableN1AcceuilScreen.routeName: (context) =>
+            ResponsableN1AcceuilScreen(),
+        ResponsableN2AcceuilScreen.routeName: (context) =>
+            ResponsableN2AcceuilScreen(),
       },
     );
   }

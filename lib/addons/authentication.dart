@@ -8,20 +8,21 @@ class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   User? get currentUser => _firebaseAuth.currentUser;
 
-  //servir a ecouter a chaque fois qu il connecte ou dec
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
-  Future<Utilisateur?> readUser() async {
-    //Get single document by id
-    final user = _firebaseAuth.currentUser;
-    final docUser =
-        FirebaseFirestore.instance.collection('users').doc(user?.uid);
-    final snapshot = await docUser.get();
+  bool isUserLoggedIn() {
+    var user = currentUser;
+    return user != null;
+  }
 
-    if (snapshot.exists) {
-      return Utilisateur.fromJson(snapshot);
+  Future getUser(String uid) async {
+    try {
+      var userData =
+          await FirebaseFirestore.instance.collection("users").doc(uid).get();
+      return Utilisateur.fromJson(userData.data()!);
+    } catch (e) {
+      return e.toString();
     }
-    return null;
   }
 
   Future<void> signInWithEmailAndPassword({

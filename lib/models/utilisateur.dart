@@ -13,7 +13,7 @@ class Utilisateur {
   // final String adresse;
   final String email;
   final String password;
-  Role role;
+  String role;
 
   Utilisateur({
     this.id = '',
@@ -26,21 +26,9 @@ class Utilisateur {
     // required this.adresse,
     required this.email,
     required this.password,
-    this.role = Role.personnelSimple,
+    this.role = "responsableNiv2",
   });
 
-  factory Utilisateur.fromJson(
-      DocumentSnapshot<Map<String, dynamic>> snapshot) {
-    final data = snapshot.data();
-    return Utilisateur(
-      id: data?['id'],
-      nom: data?['nom'],
-      prenom: data?['prenom'],
-      email: data?['email'],
-      password: data?['password'],
-      role: data?['role'],
-    );
-  }
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -48,25 +36,16 @@ class Utilisateur {
       'prenom': prenom,
       'email': email,
       'password': password,
-      'role': "personnelSimple",
+      'role': "responsableNiv2",
     };
   }
-  // Map<String, dynamic> toJson() => {
-  //       'id': id,
-  //       'nom': nom,
-  //       'prenom': prenom,
-  //       'email': email,
-  //       'password': password,
-  //       'role': "personnelSimple",
-  //     };
 
-  // static Utilisateur fromJson(Map<String, dynamic> json) => Utilisateur(
-  //       id: json['id'],
-  //       nom: json['nom'],
-  //       prenom: json['prenom'],
-  //       email: json['email'],
-  //       password: json['password'],
-  //       role: json['role'],
-  //       // birthday: (json['birthday'] as Timestamp).toDate(),
-  //     );
+  static Utilisateur fromJson(Map<String, dynamic> json) => Utilisateur(
+        id: json['id'],
+        nom: json['nom'],
+        prenom: json['prenom'],
+        email: json['email'],
+        password: json['password'],
+        role: json['role'],
+      );
 }
