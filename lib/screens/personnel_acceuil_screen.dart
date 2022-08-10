@@ -16,13 +16,13 @@ class PersonnelAcceuilScreen extends StatefulWidget {
 
 class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
   bool loggedIn = false;
-  User? user = Auth().currentUser!;
+  User? user = Auth().currentUser as User?;
   Utilisateur? userTest;
 
   @override
   void initState() {
     super.initState();
-    user = Auth().currentUser;
+    user = Auth().currentUser as User?;
     loggedIn = Auth().isUserLoggedIn();
     getUser();
   }

@@ -19,7 +19,7 @@ class _TestScreenState extends State<TestScreen> {
   @override
   void initState() {
     super.initState();
-    user = Auth().currentUser!;
+    user = Auth().currentUser as User;
     getUser();
   }
 
