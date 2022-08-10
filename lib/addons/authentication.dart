@@ -9,6 +9,7 @@ class Auth {
   User? get currentUser => FirebaseAuth.instance.currentUser();
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+   
 
   bool isUserLoggedIn() {
     var user = FirebaseAuth.instance.currentUser();

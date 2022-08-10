@@ -35,22 +35,37 @@ class _TestScreenState extends State<TestScreen> {
         }));
   }
 
+  Future<void> signOut() async {
+    await Auth().signOut().then((value) {});
+  }
+
+  Widget _signOutButton() {
+    return ElevatedButton(
+        onPressed: () {
+          signOut();
+        },
+        child: const Text('Sign Out'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
       stream: Auth().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          if (userTest?.role == "personnelSimple") {
-            return const PersonnelAcceuilScreen();
-          } else if (userTest?.role == "responsableNiv2") {
-            return const ResponsableN2AcceuilScreen();
-          } else if (userTest?.role == "responsableNiv1") {
-            return const ResponsableN1AcceuilScreen();
-          }
+          // if (userTest?.role == "personnelSimple") {
+          //   return const PersonnelAcceuilScreen();
+          // } else if (userTest?.role == "responsableNiv2") {
+          //   return const ResponsableN2AcceuilScreen();
+          // } else if (userTest?.role == "responsableNiv1") {
+          //   return const ResponsableN1AcceuilScreen();
+          // }
 
-          return const Scaffold(
-              body: Center(child: CircularProgressIndicator()));
+          return Scaffold(
+              appBar: AppBar(
+                title: Text(userTest?.role ?? "role"),
+              ),
+              body: _signOutButton());
         } else {
           return const LoginScreen();
         }
