@@ -22,7 +22,7 @@ class SonatrachApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "sonatrach dz",
+      title: "sonatrach",
       initialRoute: "/",
       routes: {
         TestScreen.routeName: (context) => TestScreen(),
