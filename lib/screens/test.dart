@@ -24,8 +24,8 @@ class _TestScreenState extends State<TestScreen> {
     getUser();
   }
 
-  Future getUser() async {
-    await Auth().getUser(user!.uid).then((snap) => setState(() {
+  Future<void> getUser() async {
+    await Auth().getUser().then((snap) => setState(() {
           userTest = snap;
         }));
   }
@@ -49,9 +49,10 @@ class _TestScreenState extends State<TestScreen> {
       builder: ((context, snapshot) {
         if (snapshot.hasData) {
           if (userTest != null) {
-            return const PersonnelAcceuilScreen();
-          } else
+            return PersonnelAcceuilScreen();
+          } else {
             return LoginScreen();
+          }
         } else {
           return const LoginScreen();
         }

@@ -26,7 +26,7 @@ class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
   }
 
   Future getUser() async {
-    await Auth().getUser(user!.uid).then((snap) => setState(() {
+    await Auth().getUser().then((snap) => setState(() {
           userTest = snap;
         }));
   }

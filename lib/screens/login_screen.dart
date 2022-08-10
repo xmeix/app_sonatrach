@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:app_sonatrach/addons/authentication.dart';
+import 'package:app_sonatrach/screens/test.dart';
 import 'package:app_sonatrach/widgets/background_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -82,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return ElevatedButton(
       onPressed: () {
         signInWithEmailAndPassword();
+        
       },
       style: ButtonStyle(
           backgroundColor:
