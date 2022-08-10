@@ -17,8 +17,10 @@ class Auth {
 
   Future getUser() async {
     try {
-      var userData =
-          await FirebaseFirestore.instance.collection("users").doc(currentUser!.uid).get();
+      var userData = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(currentUser!.uid)
+          .get();
       return Utilisateur.fromJson(userData.data()!);
     } catch (e) {
       return e.toString();

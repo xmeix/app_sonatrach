@@ -1,6 +1,7 @@
 import 'package:app_sonatrach/addons/authentication.dart';
 import 'package:app_sonatrach/models/utilisateur.dart';
 import 'package:app_sonatrach/screens/login_screen.dart';
+import 'package:app_sonatrach/screens/test.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -39,9 +40,9 @@ class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
     return ElevatedButton(
         onPressed: () {
           signOut();
-          Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => LoginScreen()),
-              (route) => false);
+          // Navigator.of(context).pushAndRemoveUntil(
+          //     MaterialPageRoute(builder: (context) => TestScreen()),
+          //     (route) => false);
         },
         child: const Text('Sign Out'));
   }

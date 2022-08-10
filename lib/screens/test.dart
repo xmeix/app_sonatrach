@@ -17,46 +17,32 @@ class _TestScreenState extends State<TestScreen> {
   bool loggedIn = Auth().isUserLoggedIn();
   User? user = Auth().currentUser;
   Utilisateur? userTest;
+
   @override
   void initState() {
     super.initState();
+    user = Auth().currentUser;
+    loggedIn = Auth().isUserLoggedIn();
 
     getUser();
   }
 
-  Future<void> getUser() async {
-    await Auth().getUser().then((snap) => setState(() {
-          userTest = snap;
-        }));
-  }
-
-  Future<void> signOut() async {
-    await Auth().signOut().then((value) {});
-  }
-
-  Widget _signOutButton() {
-    return ElevatedButton(
-        onPressed: () {
-          signOut();
-        },
-        child: const Text('Sign Out'));
+  Future getUser() async {
+    await Auth().getUser();
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<User?>(
       stream: Auth().authStateChanges,
-      builder: ((context, snapshot) {
+      builder: (context, snapshot) {
         if (snapshot.hasData) {
-          if (userTest != null) {
-            return PersonnelAcceuilScreen();
-          } else {
-            return LoginScreen();
-          }
+          print("data exists");
+          return const PersonnelAcceuilScreen();
         } else {
           return const LoginScreen();
         }
-      }),
+      },
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:app_sonatrach/screens/responsable_acceuil_screen.dart';
 import 'package:app_sonatrach/screens/responsable_niv2_screen.dart';
 import 'package:app_sonatrach/screens/test.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:app_sonatrach/screens/list_screen.dart';
 import 'package:app_sonatrach/screens/login_screen.dart';
 import 'package:app_sonatrach/screens/signup_screen.dart';
@@ -25,11 +25,11 @@ class SonatrachApp extends StatelessWidget {
       title: "sonatrach dz",
       initialRoute: "/",
       routes: {
-        '/': (context) => TestScreen(),
+        TestScreen.routeName: (context) => TestScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         SignupScreen.routeName: (context) => SignupScreen(),
         ListScreen.routeName: (context) => ListScreen(),
-         PersonnelAcceuilScreen.routeName: (context) => PersonnelAcceuilScreen(),
+        PersonnelAcceuilScreen.routeName: (context) => PersonnelAcceuilScreen(),
         ResponsableN1AcceuilScreen.routeName: (context) =>
             ResponsableN1AcceuilScreen(),
         ResponsableN2AcceuilScreen.routeName: (context) =>
