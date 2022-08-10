@@ -39,10 +39,7 @@ class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
   Widget _signOutButton() {
     return ElevatedButton(
         onPressed: () {
-          signOut();
-          // Navigator.of(context).pushAndRemoveUntil(
-          //     MaterialPageRoute(builder: (context) => TestScreen()),
-          //     (route) => false);
+          signOut(); 
         },
         child: const Text('Sign Out'));
   }
