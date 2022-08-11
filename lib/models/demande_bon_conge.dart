@@ -1,15 +1,20 @@
-enum TypeDemande{
-  encours,
-  valide,
-  nonvalide
-}
+enum TypeDemande { encours, valide, nonvalide }
 
 class DemandeConge {
-  final double id;
+  final String id;
   final String senderName;
   final DateTime dateDeb;
   final DateTime dateFin;
-  final TypeDemande typeDemande;
+  // final TypeDemande typeDemande;
+  final String typeDemande;
   final String motif;
-  DemandeConge(this.id, this.dateDeb, this.dateFin, this.motif, this.typeDemande, this.senderName);
+
+  DemandeConge({
+    required this.id,
+    required this.dateDeb,
+    required this.dateFin,
+    required this.motif,
+    required this.typeDemande,
+    required this.senderName,
+  });
 }

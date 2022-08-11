@@ -28,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
-        print(e.message);
         errorMessage = e.message;
       });
     }
@@ -74,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
           labelStyle: TextStyle(
             fontSize: 15,
             color: Color(0xff0d0d0d),
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w400,
           ),
         ));
   }
@@ -83,7 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return ElevatedButton(
       onPressed: () {
         signInWithEmailAndPassword();
-        
       },
       style: ButtonStyle(
           backgroundColor:
@@ -108,54 +106,48 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          //Background Image
-          BackgroundImage(path: 'assets/images/Background.jpg'),
-          Container(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  height: 70,
-                  width: 70,
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 60),
-                  child: Image.asset(
-                    'assets/images/logo2.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                Text(
-                  "Connexion".toUpperCase(),
-                  style: TextStyle(
-                    color: Color(0xff0d0d0d),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 25,
-                    letterSpacing: 5,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
-                  height: 250,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      buildTextFormField(false, _controllerEmail),
-                      buildTextFormField(true, _controllerPassword),
-                      _errorMessage(),
-                      Container(
-                        alignment: Alignment.topRight,
-                        child: buildLoginButton(),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      body: Container(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 70,
+              width: 70,
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 60),
+              child: Image.asset(
+                'assets/images/logo2.png',
+                fit: BoxFit.fill,
+              ),
             ),
-          )
-        ],
+            Text(
+              "Connexion".toUpperCase(),
+              style: TextStyle(
+                color: Color(0xff0d0d0d),
+                fontWeight: FontWeight.w600,
+                fontSize: 25,
+                letterSpacing: 5,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
+              height: 250,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  buildTextFormField(false, _controllerEmail),
+                  buildTextFormField(true, _controllerPassword),
+                  _errorMessage(),
+                  Container(
+                    alignment: Alignment.topRight,
+                    child: buildLoginButton(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

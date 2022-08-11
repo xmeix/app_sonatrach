@@ -2,6 +2,8 @@ import 'package:app_sonatrach/addons/authentication.dart';
 import 'package:app_sonatrach/models/utilisateur.dart';
 import 'package:app_sonatrach/screens/login_screen.dart';
 import 'package:app_sonatrach/screens/test.dart';
+import 'package:app_sonatrach/widgets/carte.dart';
+import 'package:app_sonatrach/widgets/navbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -50,9 +52,66 @@ class _ResponsableN2AcceuilScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Responsable 2"),
-        ),
-        body: _signOutButton());
+      body: Column(
+        children: [
+          NavBar(title: 'Acceuil Responsable Niveau 2'),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 55,
+              vertical: 60,
+            ),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 40,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      const Text(
+                        'Bonjour!,',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          letterSpacing: 1.25,
+                        ),
+                      ),
+                      Text(
+                        "${userTest?.nom} ${userTest?.prenom}".toLowerCase(),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "MouseMemoirs-Regular",
+                          fontSize: 20,
+                          letterSpacing: 1.25,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Carte(
+                  nom: "Les demandes de bons de sortie des employés",
+                  description:
+                      'Cette demande concerne les employés qui veulent une demande de bon de sortie',
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Carte(
+                  nom: "Les demandes de congés des employés",
+                  description:
+                      'Cette demande concerne les employés qui veulent une demande de congé',
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+    ;
   }
 }

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 enum Role { personnelSimple, responsableNiv1, responsableNiv2 }
 
 class Utilisateur {
-  String id;
+  final String id;
   final String nom;
   final String prenom;
   // final DateTime dateNaissance;
@@ -13,9 +13,9 @@ class Utilisateur {
   // final String adresse;
   final String email;
   final String password;
-  String role;
+  final String role;
 
-  Utilisateur({
+  const Utilisateur({
     this.id = '',
     required this.nom,
     required this.prenom,
