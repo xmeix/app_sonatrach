@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:app_sonatrach/models/demande_bon_conge.dart';
 import 'package:app_sonatrach/models/demande_bon_sortie.dart';
 import 'package:app_sonatrach/widgets/navbar.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,17 @@ class DemandeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final demande = ModalRoute.of(context)!.settings.arguments as DemandeSortie;
+    List<dynamic> args = ModalRoute.of(context)!.settings.arguments as List;
+
+    final bool isItList = args[0];
+    var demande;
+
+    if (isItList) {
+      demande = args[1] as DemandeSortie;
+    } else {
+      demande = args[1] as DemandeConge;
+    }
+
     return Scaffold(
       body: Column(
         children: [
@@ -88,8 +99,9 @@ class DemandeScreen extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              'Date Debut : ${DateFormat.yMd().format(demande.dateDeb)}'
-                                  .toLowerCase(),
+                              isItList
+                                  ? 'Heure Debut : ${demande.heureDeb}'
+                                  : 'Date Debut : ${DateFormat.yMd().format(demande.dateDeb)}',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w300,
@@ -111,8 +123,9 @@ class DemandeScreen extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              'Date fin :  ${DateFormat.yMd().format(demande.dateFin)}'
-                                  .toLowerCase(),
+                              isItList
+                                  ? 'Heure Fin : ${demande.heureFin}'
+                                  : 'Date Fin : ${DateFormat.yMd().format(demande.dateFin)}',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w300,

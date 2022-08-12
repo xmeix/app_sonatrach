@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ListeDemandes extends StatelessWidget {
-  final List<DemandeSortie> liste;
-  const ListeDemandes({Key? key, required this.liste}) : super(key: key);
+  final List liste;
+  final bool isItList;
+  const ListeDemandes({Key? key, required this.liste, required this.isItList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,7 @@ class ListeDemandes extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const DemandeScreen(),
-                  // Pass the arguments as part of the RouteSettings. The
-                  // DetailScreen reads the arguments from these settings.
-                  settings: RouteSettings(
-                    arguments: liste[index],
-                  ),
+                  settings: RouteSettings(arguments: [isItList, liste[index]]),
                 ),
               );
             },
@@ -54,7 +52,9 @@ class ListeDemandes extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                         )),
                                     Text(
-                                        'De ${DateFormat.Hm().format(liste[index].dateDeb)}h a  ${DateFormat.Hm().format(liste[index].dateFin)}h',
+                                        isItList
+                                            ? 'De ${liste[index].heureDeb}h a  ${liste[index].heureFin}h'
+                                            : 'De ${DateFormat.Hm().format(liste[index].dateDeb)}h a  ${DateFormat.Hm().format(liste[index].dateFin)}h',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w300,
                                         )),

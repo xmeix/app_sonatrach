@@ -1,13 +1,9 @@
 import 'package:app_sonatrach/addons/authentication.dart';
 import 'package:app_sonatrach/models/utilisateur.dart';
-import 'package:app_sonatrach/screens/login_screen.dart';
-import 'package:app_sonatrach/screens/test.dart';
 import 'package:app_sonatrach/widgets/carte.dart';
 import 'package:app_sonatrach/widgets/navbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ResponsableN2AcceuilScreen extends StatefulWidget {
   const ResponsableN2AcceuilScreen({Key? key}) : super(key: key);
@@ -41,20 +37,12 @@ class _ResponsableN2AcceuilScreenState
     await Auth().signOut().then((value) {});
   }
 
-  Widget _signOutButton() {
-    return ElevatedButton(
-        onPressed: () {
-          signOut();
-        },
-        child: const Text('Sign Out'));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          NavBar(title: 'Acceuil Responsable Niveau 2'),
+          const NavBar(title: 'Acceuil Responsable Niveau 2'),
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 55,
@@ -97,6 +85,8 @@ class _ResponsableN2AcceuilScreenState
                   nom: "Les demandes de bons de sortie des employés",
                   description:
                       'Cette demande concerne les employés qui veulent une demande de bon de sortie',
+                  gestion: true,
+                  listeDem: true,
                 ),
                 const SizedBox(
                   height: 15,
@@ -105,6 +95,8 @@ class _ResponsableN2AcceuilScreenState
                   nom: "Les demandes de congés des employés",
                   description:
                       'Cette demande concerne les employés qui veulent une demande de congé',
+                  gestion: true,
+                  listeDem: false,
                 ),
               ],
             ),

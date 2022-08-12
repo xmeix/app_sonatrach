@@ -92,16 +92,18 @@ class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
                 ),
                 const Carte(
                   nom: "Mes Demandes De Bons de sortie",
-                  description:
-                      'Cette demande concerne les employés qui veulent une demande de bon de sortie',
+                  description: 'Cette demande concerne les employés qui veulent une demande de bon de sortie',
+                      gestion:false,
+                      listeDem:true,
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 const Carte(
                   nom: "Mes Demandes De Bons de congé",
-                  description:
-                      'Cette demande concerne les employés qui veulent une demande de congé',
+                  description:'Cette demande concerne les employés qui veulent une demande de congé',
+                  gestion:false,
+                  listeDem:false,
                 ),
               ],
             ),

@@ -71,24 +71,32 @@ class _ResponsableN1AcceuilScreenState
                       nom: "Mes Demandes De Bons de sortie",
                       description:
                           'Cette demande concerne les employés qui veulent une demande de bon de sortie',
+                      gestion: false,
+                      listeDem: true,
                     ),
                     SizedBox(height: 15),
                     Carte(
-                      nom: "Les demandes De Bons de congé",
+                      nom: "Mes demandes De Bons de congé",
                       description:
                           'Cette demande concerne les employés qui veulent une demande de congé',
+                      gestion: false,
+                      listeDem: false,
                     ),
                     SizedBox(height: 15),
                     Carte(
-                      nom: "Mes Demandes De Bons de sortie",
+                      nom: "Les Demandes De Bons de sortie des employés",
                       description:
                           'Cette demande concerne les employés qui veulent une demande de bon de sortie',
+                      gestion: true,
+                      listeDem: true,
                     ),
                     SizedBox(height: 15),
                     Carte(
-                      nom: "Mes Demandes De Bons de congé",
+                      nom: "Les Demandes De congé des employés",
                       description:
                           'Cette demande concerne les employés qui veulent une demande de congé',
+                      gestion: true,
+                      listeDem: false,
                     ),
                   ],
                 ),

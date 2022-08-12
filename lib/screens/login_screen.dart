@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:app_sonatrach/addons/authentication.dart';
-import 'package:app_sonatrach/screens/test.dart';
-import 'package:app_sonatrach/widgets/background_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -19,12 +17,11 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   String? errorMessage = '';
-
   Future<void> signInWithEmailAndPassword() async {
     try {
       await Auth().signInWithEmailAndPassword(
-        email: _controllerEmail.text,
-        password: _controllerPassword.text,
+        email: _controllerEmail.text.trim(),
+        password: _controllerPassword.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -100,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _errorMessage() {
-    return Text(errorMessage == '' ? '' : 'Humm? $errorMessage');
+    return Text(errorMessage as String, style: TextStyle(color: Colors.black));
   }
 
   @override
@@ -138,11 +135,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   buildTextFormField(false, _controllerEmail),
                   buildTextFormField(true, _controllerPassword),
-                  _errorMessage(),
                   Container(
                     alignment: Alignment.topRight,
                     child: buildLoginButton(),
                   ),
+                  _errorMessage(),
                 ],
               ),
             ),

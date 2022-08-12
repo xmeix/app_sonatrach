@@ -1,4 +1,5 @@
 import 'package:app_sonatrach/addons/authentication.dart';
+import 'package:app_sonatrach/screens/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -42,7 +43,7 @@ class NavBar extends StatelessWidget {
             ),
             onPressed: () {
               ///Navigation
-              signOut();
+              signOut(); 
             },
           ),
         )

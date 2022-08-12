@@ -75,11 +75,9 @@ class _TestScreenState extends State<TestScreen> {
           } else if (userTest?.role == "responsableNiv1") {
             return ResponsableN1AcceuilScreen();
           } else {
-            return Scaffold(
-                appBar: AppBar(
-                  title: Text(userTest?.role ?? "role"),
-                ),
-                body: _signOutButton());
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
           }
         } else {
           return const LoginScreen();

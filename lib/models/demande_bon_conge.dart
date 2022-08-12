@@ -6,7 +6,7 @@ class DemandeConge {
   final DateTime dateDeb;
   final DateTime dateFin;
   // final TypeDemande typeDemande;
-  final String typeDemande;
+  final String etat;
   final String motif;
 
   DemandeConge({
@@ -14,7 +14,7 @@ class DemandeConge {
     required this.dateDeb,
     required this.dateFin,
     required this.motif,
-    required this.typeDemande,
+    required this.etat,
     required this.senderName,
   });
 }
