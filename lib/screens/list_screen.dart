@@ -26,7 +26,10 @@ class _ListScreenState extends State<ListScreen> {
     return Scaffold(
       body: Column(
         children: [
-          NavBar(title: "Mes Bons De Sortie"),
+          NavBar(
+              title: listeDem
+                  ? "Mes Demandes de Bons De Sortie"
+                  : "Mes Demandes de congé"),
           ListeDemandes(
             liste: listeDem ? listeDemSortie : listeDemConge,
             isItList: listeDem,
