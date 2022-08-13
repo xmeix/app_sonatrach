@@ -2,6 +2,7 @@
 
 import 'package:app_sonatrach/addons/authentication.dart';
 import 'package:app_sonatrach/models/utilisateur.dart';
+import 'package:app_sonatrach/screens/new_demande.dart';
 import 'package:app_sonatrach/widgets/carte.dart';
 import 'package:app_sonatrach/widgets/navbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -44,6 +45,19 @@ class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
           signOut();
         },
         child: const Text('Sign Out'));
+  }
+
+  startAddNewDemande(BuildContext ctx) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            behavior: HitTestBehavior.opaque,
+            child: NewDemandeScreen(),
+          );
+        });
   }
 
   @override
@@ -92,24 +106,32 @@ class _PersonnelAcceuilScreenState extends State<PersonnelAcceuilScreen> {
                 ),
                 const Carte(
                   nom: "Mes Demandes De Bons de sortie",
-                  description: 'Cette demande concerne les employés qui veulent une demande de bon de sortie',
-                      gestion:false,
-                      listeDem:true,
+                  description:
+                      'Cette demande concerne les employés qui veulent une demande de bon de sortie',
+                  gestion: false,
+                  listeDem: true,
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 const Carte(
                   nom: "Mes Demandes De Bons de congé",
-                  description:'Cette demande concerne les employés qui veulent une demande de congé',
-                  gestion:false,
-                  listeDem:false,
+                  description:
+                      'Cette demande concerne les employés qui veulent une demande de congé',
+                  gestion: false,
+                  listeDem: false,
                 ),
               ],
             ),
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => startAddNewDemande(context),
+        backgroundColor: Colors.grey[500],
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

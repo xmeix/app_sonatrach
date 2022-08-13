@@ -32,11 +32,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildTextFormField(bool isPassword, TextEditingController controller) {
     return TextFormField(
-        controller: controller,
+        controller: controller,        obscureText: isPassword ? true : false,
+
         style: TextStyle(
           color: Color(0xff0d0d0d),
         ),
-        obscureText: isPassword ? true : false,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           // icon: Icon(Icons.password),
